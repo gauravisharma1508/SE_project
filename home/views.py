@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.views import View
 # Create your views here.
 def index(request):
-    return render(request,'features/home.html')
+    return render(request,'features/index.html')
 
 def home(request):
     return render(request,'features/home.html')

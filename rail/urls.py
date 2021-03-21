@@ -20,9 +20,11 @@ from home import views
 app_name='basic'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.log,name='log'),
-    path('register/',views.Reg,name="reg"),
-    path('logout/',views.logout,name="logout"),
-    path('home/',include('home.urls',namespace="home"),name="home"),
+    path('',views.index,name='index'),
+    #path('register/',views.Register,name="reg"),
+    #path('login/',,name="login"),
+    #path('logout/',views.logout,name="logout"),
+    #path('home/',include('home.urls',namespace="home"),name="home"),
+    
 
 ]
