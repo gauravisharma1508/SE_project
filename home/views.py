@@ -1,15 +1,21 @@
 from django.shortcuts import render
 from django.template import loader
 from features.models import Members
+from django.shortcuts import render, redirect,HttpResponseRedirect,HttpResponse
 from .forms import UserLogin,UserReg
 from django.contrib import auth
 from django.contrib.auth import authenticate,login
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views import View
+from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
-def index(request):
-    return render(request,'features/index.html')
+class Index(View):
+    def get(self, request):
+        return render(request, "features/index.html")
+
+    def post(self, request):
+        return render(request, "feautures/index.html")
 
 def home(request):
     return render(request,'features/home.html')
@@ -25,7 +31,7 @@ class Register(View):
         username = postData.get('uname')
         email = postData.get('email')
         password = postData.get('psw')
-
+        print(password)
 
         # validation
         value = {'username': username, 'email': email}
@@ -38,10 +44,10 @@ class Register(View):
             member.register()
             request.session['username'] = member.username
             request.session['member'] = member.id
-            return redirect('home')
+            return redirect('login')
         else:
             data = {'error': err_msg, 'values': value}
-            return render(request, "register.html",data)
+            return render(request, "features/register.html",data)
 
     def validateMember(self,member):
         err_msg = None
@@ -60,8 +66,8 @@ class Register(View):
 
 class Login(View):
     def get(self, request):
-        Login.return_url = request.GET.get('return_url')
-        return render(request, "login.html")
+        #Login.return_url = request.GET.get('return_url')
+        return render(request, "features/login.html")
 
     def post(self, request):
 
@@ -78,21 +84,22 @@ class Login(View):
             if flag:
                 request.session['username'] = member.username
                 request.session['member'] = member.id
-                if Login.return_url:
-                    return HttpResponseRedirect(Login.return_url)
-                else:
-
-                    Login.return_url = None
-                    return redirect('home')
+                return render(request, 'features/home.html')
             else:
                 err_msg = 'Username or Password invalid1'
         else:
             err_msg = 'Username or Password invalid2'
-        return render(request, 'login.html', {'error': err_msg})
+        return render(request, 'features/login.html', {'error': err_msg})
 
 
 def logout(request):
     request.session.clear()
-    return redirect('index')
+    return render(request, 'features/index.html')
 
 
+class Contact(View):
+    def post(self, request):
+        return render(request, "features/contact.html")
+
+    def get(self, request):
+        return render(request, "features/contact.html")

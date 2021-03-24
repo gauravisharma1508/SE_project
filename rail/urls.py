@@ -17,14 +17,16 @@ from django.contrib import admin
 from django.urls import path,include
 from features import views
 from home import views
+from home.views import Index
 app_name='basic'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name='index'),
+    #path('',Index.as_view(),name='index'),
     #path('register/',views.Register,name="reg"),
     #path('login/',,name="login"),
     #path('logout/',views.logout,name="logout"),
+    path('',include('home.urls')),
     #path('home/',include('home.urls',namespace="home"),name="home"),
-    
+
 
 ]

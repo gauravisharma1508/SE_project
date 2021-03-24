@@ -20,11 +20,10 @@
           </a>
           <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
 
-            <a href="{% url 'index' %}" class="mr-5 hover:text-gray-900"><b>Home</b></a>
-            <a href="" class="mr-5 hover:text-gray-900"><b>Check Schedule</b></a>
+            <a href="" class="mr-5 hover:text-gray-900"><b>Home</b></a>
+            <a href="schedule" class="mr-5 hover:text-gray-900"><b>Check Schedule</b></a>
             <a class="mr-5 hover:text-gray-900"><b>PNR Enquiry</b></a>
-            <a href="" class="mr-5 hover:text-gray-900"><b>Contact</b></a>
-            <a href="" class="mr-5 hover:text-gray-900"><b>Book</b></a>
+            <a href="contact" class="mr-5 hover:text-gray-900"><b>Contact</b></a>
             <a class="mr-5 hover:text-gray-900"><b>{{request.session.username}}</b></a>
 
 
@@ -45,11 +44,12 @@
             <div class="flex justify-center">
 
               {% if request.session.member%}
-                            <a href="{% url 'logout' %}"><button class="inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Log Out</button></a>
+                            <a href="logout"><button class="inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Log Out</button></a>
                             {% else %}
-                            <a href=""><button class="inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Log in</button></a>
+                            <a href="login"><button class="inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Log in</button></a>
+              <a href="register"><button class="ml-4 inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Register</button></a>
               {% endif %}
-              <a href=""><button class="ml-4 inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Register</button></a>
+
             </div>
           </div>
           <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
