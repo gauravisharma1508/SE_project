@@ -24,7 +24,7 @@
             <a href="schedule" class="mr-5 hover:text-gray-900"><b>Check Schedule</b></a>
             <a class="mr-5 hover:text-gray-900"><b>PNR Enquiry</b></a>
             <a href="contact" class="mr-5 hover:text-gray-900"><b>Contact</b></a>
-            <a class="mr-5 hover:text-gray-900"><b>{{request.session.username}}</b></a>
+
 
 
 
@@ -43,12 +43,11 @@
             <p class="mb-8 leading-relaxed"><b>India has some of the most spectacular and unforgettable <br>rail journeys in the world. Here you experience a simple to <br>find out everything you need to know in one easy place.<br> There's no better way to enjoy India's outback, cities,<br> coastal towns and regional areas in comfort.</b></p>
             <div class="flex justify-center">
 
-              {% if request.session.member%}
-                            <a href="logout"><button class="inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Log Out</button></a>
-                            {% else %}
+
+
                             <a href="login"><button class="inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Log in</button></a>
               <a href="register"><button class="ml-4 inline-flex text-white bg-pink-400 border-0 py-2 px-6 focus:outline-none hover:bg-pink-500 rounded text-lg">Register</button></a>
-              {% endif %}
+
 
             </div>
           </div>

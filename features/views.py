@@ -8,7 +8,7 @@ import json
 
 from home.models import RouteStation,Station,Route,Trains,Reservation,Payment
 def getTrains(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         form=Usearch(request.POST)
         if form.is_valid():
 

@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.template import loader
 from features.models import Members
-from django.shortcuts import render, redirect,HttpResponseRedirect,HttpResponse
+from django.shortcuts import render,redirect,HttpResponseRedirect,HttpResponse
 from .forms import UserLogin,UserReg
 from django.contrib import auth
 from django.contrib.auth import authenticate,login
-from django.shortcuts import render,redirect
+#from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth.hashers import make_password, check_password
@@ -21,8 +21,6 @@ def home(request):
     return render(request,'features/home.html')
 
 class Register(View):
-
-
     def get(self, request):
         return render(request, "features/register.html")
 
@@ -44,7 +42,12 @@ class Register(View):
             member.register()
             request.session['username'] = member.username
             request.session['member'] = member.id
-            return redirect('login')
+
+            return redirect('/login')
+            #return render(request,"features/login.html")
+            #return redirect('features/home.html')
+
+            #return render(request, 'features/home.html')
         else:
             data = {'error': err_msg, 'values': value}
             return render(request, "features/register.html",data)
